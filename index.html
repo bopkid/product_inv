@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+    <html lang ="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <header>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            <link rel="stylesheet" type= "text/css" href="./main.css" >
+            
+        </header>
+        <body>
+
+
+            <!-- container -->
+            <div class= "container">
+                <!-- input -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text " id="inputGroup-sizing-default">Product Per Price $</span>
+                    </div>
+                    <input type="text"  id= "Price"class="form-control Price" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text " id="inputGroup-sizing-default">Product name</span>
+                     </div>
+                     <input type="text" id ="Id" class="form-control Id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text " id="inputGroup-sizing-default">Product quanity</span>
+                      </div>
+                      <input type="text"id ='Quanity' class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                      
+                  </div>
+                  <!-- /input -->
+ 
+                  <!-- button -->
+                  <button type="button" class="btn btn-outline-primary" onclick="add_product()">Add</button>
+                  
+                  <!-- /button -->
+            </div>
+            <!-- /container -->
+
+
+            <!-- container -->
+              <div id = 'product' class = 'container'>
+                <table  style="width:100%" id = 'new_product'>
+                  <tr>
+                    <th>Name</th>
+                    <th>Quanity</th>
+                    <th>Price Per Object</th>
+                    <th>Total Price of Objects $</th>
+                  </tr>
+                </table> 
+                <h2 id = 'sumV'>Total: </h2>
+              </div>
+    
+            
+            <!-- /container -->
+            <script>
+ 
+                function add_product(){
+                let Quanity= document.getElementById('Quanity').value;
+                let Price = document.getElementById('Price').value * document.getElementById('Quanity').value;
+                let Price_Per = document.getElementById('Price').value;
+                let Id= document.getElementById('Id').value;
+                let table = document.getElementById("new_product"), sumVal = 0;
+                
+
+
+                  document.getElementById('Quanity').value = ' ';
+                  document.getElementById('Id').value = ' ';
+                  document.getElementById('Price').value = ' ';
+
+                  var tableRef = document.getElementById('new_product').getElementsByTagName('tbody')[0];
+
+
+                // Insert a row in the table at the last row
+                const newRow   = tableRef.insertRow();
+
+                // Insert a cell in the row at index 0
+                const newCell1  = newRow.insertCell(0);
+                // Append a Id to the cell
+                const newId  = document.createTextNode(Id);
+                    newCell1.appendChild(newId);
+
+
+                  // Insert a cell in the row at index 1
+                  const newCell2  = newRow.insertCell(1);
+                 const newQuanity  = document.createTextNode(Quanity);
+                 // Append a Quanity to the cell
+                    newCell2.appendChild(newQuanity);
+
+                  // Insert a cell in the row at index 2
+                 const newCell3  = newRow.insertCell(2);
+                 const newPricePer  = document.createTextNode(Price_Per);
+                 // Append a Price to the cell
+                   newCell3.appendChild(newPricePer);
+
+
+
+                   // Insert a cell in the row at index 3
+                 const newCell4  = newRow.insertCell(3);
+                 const newPrice  = document.createTextNode(Price);
+                 // Append a Price to the cell
+                    newCell4.appendChild(newPrice);
+                    
+                    
+                        for(var i = 1; i < table.rows.length; i++){
+                              sumVal = sumVal + parseInt(table.rows[i].cells[3].innerHTML);
+                        }
+                        document.getElementById("sumV").innerHTML = "Total = "+sumVal +"$";
+                        console.log("Sum => "+sumVal);       
+
+                }
+                
+            
+            </script>
+        </body>
+    </html>
