@@ -17,7 +17,7 @@ const show = (req, res) =>{
 
         if(err) console.log(`Error in Item#show`, err)
 
-        if(!foundItems) return res.json({
+        if(!foundItem) return res.json({
             message: "no Item found in database"
         })
         
@@ -35,8 +35,36 @@ const create  = (req,res) =>{
         console.log(savedItem)
     })
 }
+const update  = (req,res) =>{
+    const options = {new:true}
+    db.Item.findByIdAndUpdate(req.params.id , req.body, options, (err,updatedItem) =>{
+        if(err) console.log(`Error in Item#update`. err)
 
+        if(!updatedItem) return res.json({
+            message: "No game with that ID found"
+        })
+
+        res.status(200).json({item: updatedItem})
+    })
+}
+
+
+const destory = (req,res) =>{
+    db.Item.findByIdAndDelete(req.params.id , (err, deletedItem) =>{
+        if(err) console.log(`Error in item#delete ` , err)
+
+        if(!deletedItem) return res.json({
+            message: "No Item with that Id found"
+        })
+        res.status(200).json({
+            item: deletedItem
+        })
+    })
+}
 module.exports ={
  index,
- create
+ create,
+ show,
+ destory, 
+ update
 }
