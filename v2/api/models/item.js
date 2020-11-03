@@ -4,7 +4,7 @@ const Schema  = mongoose.Schema;
 
 
 const itemSchema = new Schema({
-    Name: {
+    name: {
         type: String, 
         required: true
     },
@@ -15,14 +15,17 @@ const itemSchema = new Schema({
     seller: {
         type: String, 
         required: true
+
     },
     quantity: {
         type: Number, 
         required: true
+  
     },
     price: {
         type: Number,
         required: true
+        
     }
 })
 

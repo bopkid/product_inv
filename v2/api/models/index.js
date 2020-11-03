@@ -11,10 +11,9 @@ const configOptions ={
     useUnifiedTopology: true,
     useFindAndModify: false
 }
-
-mongoose.connect(connectionString, configOptions)
-.then(() => console.log('mongodb is working'))
-.catch((err) => console.log(err))
+mongoose.connect(connectionString,configOptions)
+    .then(()=> console.log('MongoDb Sucessfully connected...'))
+    .catch((err) => console.log(`mongoDB connection error: ${err}`))
 
 
 module.exports ={
