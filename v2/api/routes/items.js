@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 const ctrl = require('../controllers');
 
+// PATH api/items
 router.get('/', ctrl.items.index);
 router.get('/:id', ctrl.items.show);
 router.post('/', ctrl.items.create);

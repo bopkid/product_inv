@@ -1,3 +1,7 @@
 module.exports = {
-    items: require('./items')
+
+    items: require('./items'),
+    auth:require("./auth"),
+    users: require('./users'),
+
 }

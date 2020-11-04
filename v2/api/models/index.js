@@ -17,5 +17,7 @@ mongoose.connect(connectionString,configOptions)
 
 
 module.exports ={
-    Item: require("./item")
+    
+    Item: require("./item"),
+    User: require('./user')
 }
